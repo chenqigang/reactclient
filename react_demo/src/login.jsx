@@ -21,8 +21,9 @@ export function Login() {
 
   async function goMain() {
     await getData()
+    //ロジン判断
     if (count == 0) {
-      alert('ユーザー または パスワードが不正しいです')
+      alert('ユーザー または パスワードが不正しいです。')
     }else{
       navigate('/main', {replace: true});
     }
