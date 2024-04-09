@@ -8,24 +8,19 @@ export function Login() {
   const [data, setData] = useState(null);  
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  let count = 0;
 
   async function getData() {
-    //useEffect(() => {
       await axios.get('/react/login?id='+id+'&pw='+pw)
       .then(response => {  
-        setData(response.data);
-        return data;
+        count = response.data.count;
       })
       .catch(error => {  
       });
-    //}, []);
   }
 
-  function goMain() {
-    let count = getData()
-    //console.log(`Server listening on ${count}`);
-
-    //alert(count.toString())
+  async function goMain() {
+    await getData()
     if (count == 0) {
       alert('ユーザー または パスワードが不正しいです')
     }else{
